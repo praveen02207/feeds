@@ -22,7 +22,12 @@ const NewPosts = () => {
 
   useEffect(() => {
     const dataFromLocal = JSON.parse(localStorage.getItem("newpost"));
-    setData(dataFromLocal);
+    if(dataFromLocal){
+      setData(dataFromLocal);
+    }else{
+      setData([]);
+    }
+    
   }, []);
 
   // getting data from local to display posts

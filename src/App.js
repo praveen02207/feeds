@@ -8,17 +8,18 @@ import PostForm from "./addPost";
 
 const App = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<SignUpForm />} />
-        <Route path="login" element={<LoginForm />} />
-        <Route path="/posts"  element = {<NewPosts/>} />
-        <Route path="/addform"  element={<PostForm/>} />
+       
+          <Route path="/" element={<SignUpForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/posts" element={<NewPosts />} />
+          <Route path="/addform" element={<PostForm />} />
+       
       </Routes>
-    </>
+    </div>
   );
 };
 
 export default App;
-  
