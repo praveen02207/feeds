@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
-import {RiDeleteBin5Fill} from 'react-icons/ri'
+import { RiDeleteBin5Fill } from "react-icons/ri";
 import CommentModel from "./comment";
 import "./post.css";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,6 @@ const fontStyles = { color: "black", fontSize: "19px" };
 
 const fStyle = { color: "black", fontSize: "20px" };
 
-
 const NewPosts = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -22,12 +21,11 @@ const NewPosts = () => {
 
   useEffect(() => {
     const dataFromLocal = JSON.parse(localStorage.getItem("newpost"));
-    if(dataFromLocal){
+    if (dataFromLocal) {
       setData(dataFromLocal);
-    }else{
+    } else {
       setData([]);
     }
-    
   }, []);
 
   // getting data from local to display posts
@@ -119,8 +117,6 @@ const NewPosts = () => {
     localStorage.setItem("newpost", JSON.stringify(updatedData));
   };
 
-
-
   return (
     <>
       <div className="container-fluid my-5  main">
@@ -155,37 +151,51 @@ const NewPosts = () => {
                       <div className="row px-0 ">
                         <div className="col col-md-8  px-0 ">
                           <div className="head d-flex">
-                            <img
-                              src={item.image}
-                              alt="img"
-                              height={50}
-                              width={50}
-                              
-                              className="rounded-circle "
-                            ></img>
-                            {/* <p>{console.log(item.image)}</p> */}
-                            <p className="mt-2">
-                              <strong className="ms-2">{item.userName}</strong>
-                            </p>
+
+                            {item.image ? (
+                              <>
+                                <img
+                                  src={item.image}
+                                  alt="img"
+                                  height={50}
+                                  width={50}
+                                  className="rounded-circle"
+                                />
+                                <p className="mt-2">
+                                  <strong className="ms-2">
+                                    {item.userName}
+                                  </strong>
+                                </p>
+                              </>
+                            ) : (
+                              <p className="mt-2">
+                                <strong className="ms-2">
+                                  {item.userName}
+                                </strong>
+                              </p>
+                            )}
                           </div>
                         </div>
 
                         <div className=" col col-md-4 col-xs-3 px-0 mt-3">
-                        <RiDeleteBin5Fill style={fStyle}className="float-end" onClick={() => handleDeletePost(item.id)} />
+                          <RiDeleteBin5Fill
+                            style={fStyle}
+                            className="float-end"
+                            onClick={() => handleDeletePost(item.id)}
+                          />
                         </div>
                       </div>
                     </div>
-                     {/* image feed */}
-
-                    <div className="h-25 mt-2" >
-                    <img
-                      src={item.image}
-                      alt="pic"
-                      className="img-fluid rounded"
-                      // height={50}
-
-                    ></img>
-                  </div>
+                    {/* image feed */}
+                      
+                    <div className="h-25 mt-2">
+                      <img
+                        src={item.image}
+                        alt="add your image" 
+                        className="img-fluid rounded text-secondary"
+                        // height={50}
+                      ></img>
+                    </div>
 
                     {/* post content */}
                     <div>
